@@ -1,0 +1,32 @@
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2008/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>
+                04-build-postformdata
+            </Title>
+            <Shortcut>104</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[public async Task<JToken> PostFormData()
+        {
+            if (!Request.Content.IsMimeMultipartContent("form-data"))
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
+
+            var provider = await Request.Content.ReadAsMultipartAsync(new InMemoryMultipartFormDataStreamProvider());
+
+            IList<HttpContent> files = provider.Files;
+            var file1 = files[0];
+            var fileStream = await file1.ReadAsStreamAsync();
+
+            
+
+            return null;
+        }]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

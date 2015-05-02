@@ -1,0 +1,31 @@
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2008/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>
+                05-build-alchemyapicall
+            </Title>
+            <Shortcut>105</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[var alchemyUrl =
+                string.Format(
+                    "{0}?apikey={1}&outputMode=json&knowledgeGraph=1&imagePostMode=raw", _url, _alchemyApiKey);
+
+            using (var client = new HttpClient())
+            {
+                var responseMessage =
+                    await client.PostAsync(alchemyUrl, new StreamContent(fileStream)).ConfigureAwait(false);
+
+                if (!responseMessage.IsSuccessStatusCode) return "error";
+
+                var response = await responseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                var r = JsonConvert.DeserializeObject<dynamic>(response);
+                return JObject.Parse(r.ToString());
+            }]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

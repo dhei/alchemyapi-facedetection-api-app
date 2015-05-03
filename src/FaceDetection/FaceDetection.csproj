@@ -102,6 +102,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DrawFacesController.cs" />
     <Compile Include="Controllers\FaceDetectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -109,6 +110,7 @@
     <Compile Include="InMemoryMultipartProvider.cs" />
     <Compile Include="Models\FaceDetectionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AlchemyApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="apiapp.json" />
